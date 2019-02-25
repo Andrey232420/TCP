@@ -5,22 +5,24 @@
  */
 package tcp;
 
+import java.net.*;
+
 /**
  *
  * @author GT
  */
 public class Server {
 
-    public Server() {
-        NewJFrame.jTextArea1.append("qqqqq");
-//        NewJFrame frame = new NewJFrame();
-//        System.out.println("ok");
-        String str = NewJFrame.jTextField2.getText();
-//        
-        System.out.println(str);
-//        
-//        frame.set(str);
+    final int PORT = 6666;
 
+    public Server() {
+
+        try {
+
+            System.out.println("My IP: " + Inet4Address.getLocalHost().getHostAddress());
+        } catch (Exception x) {
+            x.printStackTrace();
+        }
     }
 
 }
