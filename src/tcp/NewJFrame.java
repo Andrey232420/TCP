@@ -176,11 +176,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTextArea1.setText(null);
 
-        String str = jTextField2.getText();
-        System.out.println(str);
-        jTextArea1.setText(jTextField2.getText());
-
-
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
     //Запуск TCP сервера
@@ -198,19 +194,19 @@ public class NewJFrame extends javax.swing.JFrame {
 //        System.out.println(str);
 //    }
 
-    public String getIP() {
-        String str = "";
-
-        str = jTextField2.getText();
-        System.out.println("str");
-        // jTextArea1.setText(jTextField2.getText());
-        // return jTextField2.getText();
-        return str;
-    }
-
-    public void set(String text) {
-        jTextArea1.setText(text + "\n");
-    }
+//    public String getIP() {
+//        String str = "";
+//
+//        str = jTextField2.getText();
+//        System.out.println("str");
+//        // jTextArea1.setText(jTextField2.getText());
+//        // return jTextField2.getText();
+//        return str;
+//    }
+//
+//    public void set(String text) {
+//        jTextArea1.setText(text + "\n");
+//    }
 
     /**
      * @param args the command line arguments
