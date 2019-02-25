@@ -12,12 +12,12 @@ import java.net.UnknownHostException;
  *
  * @author GT
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class Frame extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public Frame() {
         initComponents();
     }
 
@@ -43,6 +43,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -57,10 +58,13 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("Отправить сообщение");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("URL или IP адрес абонента:");
-
-        jTextField2.setText("222");
 
         jButton3.setText("Читать адрес компьютера");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +89,13 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jButton5.setText("Запуск клиента TCP");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +115,9 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -124,7 +137,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +151,9 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2))
                         .addGap(19, 19, 19)
-                        .addComponent(jButton3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(jButton5))
                         .addGap(32, 32, 32)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton4))
@@ -187,6 +202,18 @@ public class NewJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new Client();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    // отправитьсообщение
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Client client = new Client();
+        client.send();
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 //    public void test() {
 //        System.out.println("TEST");
 //        String str = "";
@@ -225,20 +252,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new Frame().setVisible(true);
                 
             }
         });
@@ -250,6 +278,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -258,6 +287,6 @@ public class NewJFrame extends javax.swing.JFrame {
     public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     public static javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    public static javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
