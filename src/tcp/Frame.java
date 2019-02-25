@@ -7,6 +7,7 @@ package tcp;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -203,14 +204,15 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new Client();
+       // new Client();
+       //JOptionPane.showMessageDialog(null, "AAAA");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     // отправитьсообщение
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Client client = new Client();
         client.send();
-        
+        Frame.jTextField3.setText(null);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

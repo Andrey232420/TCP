@@ -20,10 +20,11 @@ import java.net.Socket;
  */
 public class Client {
 
-    final int serverPort = 6666; // здесь обязательно нужно указать порт к которому привязывается сервер.
+    final int serverPort = 6667; // здесь обязательно нужно указать порт к которому привязывается сервер.
     private DataInputStream in;
     private DataOutputStream out;
     private String line = null;
+    private Socket socket;
 
     public Client() {
 
@@ -31,9 +32,9 @@ public class Client {
 
         try {
             InetAddress ipAddress = InetAddress.getByName(address); // создаем объект который отображает вышеописанный IP-адрес.
-            System.out.println("Any of you heard of a socket with IP address " + address + " and port " + serverPort + "?");
-            Socket socket = new Socket(ipAddress, serverPort); // создаем сокет используя IP-адрес и порт сервера.
-            System.out.println("Yes! I just got hold of the program.");
+//            System.out.println("Any of you heard of a socket with IP address " + address + " and port " + serverPort + "?");
+            socket = new Socket(ipAddress, serverPort); // создаем сокет используя IP-адрес и порт сервера.
+//            System.out.println("Yes! I just got hold of the program.");
 
             // Берем входной и выходной потоки сокета, теперь можем получать и отсылать данные клиентом. 
             InputStream sin = socket.getInputStream();
@@ -56,9 +57,12 @@ public class Client {
             out.writeUTF(line); // отсылаем введенную строку текста серверу.
             out.flush(); // заставляем поток закончить передачу данных.
             line = in.readUTF(); // ждем пока сервер отошлет строку текста.
-            System.out.println("The server was very polite. It sent me this : " + line);
+            Frame.jTextArea1.append("Принято от сервера: " + line+"\n");
+//            System.out.println("The server was very polite. It sent me this : " + line);
         } catch (Exception x) {
             x.printStackTrace();
         }
     }
+    
+    
 }
