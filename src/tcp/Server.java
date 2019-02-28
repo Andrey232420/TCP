@@ -22,9 +22,10 @@ public class Server {
     public Server() {
 
         try {
-          //  Frame.jTextArea1.append("I`m server. My IP: " + Inet4Address.getLocalHost().getHostAddress());
+
+            //  Frame.jTextArea1.append("I`m server. My IP: " + Inet4Address.getLocalHost().getHostAddress());
             ServerSocket ss = new ServerSocket(port); // создаем сокет сервера и привязываем его к вышеуказанному порту
-            
+
             System.out.println("Жду клиента");
             //Frame.jTextArea1.append("Жду клиента");
 
@@ -32,7 +33,6 @@ public class Server {
             System.out.println("Клиент подключился");
 
             //Frame.jTextArea1.append("Клиент подключился");
-
             // Берем входной и выходной потоки сокета, теперь можем получать и отсылать данные клиенту. 
             InputStream sin = socket.getInputStream();
             OutputStream sout = socket.getOutputStream();
@@ -41,22 +41,28 @@ public class Server {
             DataInputStream in = new DataInputStream(sin);
             DataOutputStream out = new DataOutputStream(sout);
 
+            Frame.jLabel4.setText("Сервер запущен");
+
             String line = null;
-         // while (true) {
+
+            while (true) {
+                System.out.println("Жду следующего клиента");
                 line = in.readUTF(); // ожидаем пока клиент пришлет строку текста.
-       
-                System.out.println(socket.getInetAddress().getHostName() );
-                System.out.println(socket.getInetAddress().getHostAddress() );
 
+                System.out.println(socket.getInetAddress().getHostName());
+                System.out.println(socket.getInetAddress().getHostAddress());
 
-                Frame.jTextArea1.append(Inet4Address.getLocalHost().getHostName() + " принял сообщение от " 
-                        + socket.getInetAddress().getCanonicalHostName() + ": '" + line+ "'\n");
-                System.out.println("Пришло: "+line);
+                Frame.jTextArea1.append(Inet4Address.getLocalHost().getHostName() + " принял сообщение от "
+                        + socket.getInetAddress().getCanonicalHostName() + ": '" + line + "'\n");
+                System.out.println("Пришло: " + line);
                 out.writeUTF(line); // отсылаем клиенту обратно ту самую строку текста.
-                out.flush(); // заставляем поток закончить передачу данных.
-         // }
+                //  out.flush(); // заставляем поток закончить передачу данных.
+
+            }
         } catch (Exception x) {
             x.printStackTrace();
+        } finally {
+
         }
     }
 
